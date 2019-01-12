@@ -28,3 +28,7 @@ Session(app)
 @app.route("/")
 def dashboard():
     return render_template("index.html")
+
+@app.route("/orders")
+def orders():
+    return render_template("orders.html")
