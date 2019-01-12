@@ -1,6 +1,4 @@
 import os
-
-from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
@@ -28,5 +26,5 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 @app.route("/")
-def jumbotron():
+def dashboard():
     return render_template("index.html")
