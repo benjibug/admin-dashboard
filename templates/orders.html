@@ -6,60 +6,56 @@
 
 {% block main %}
 
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Orders</h1>
+  <div class="col-auto">
+      
+    <!-- Button -->
+    <a href="#" class="btn btn-primary">
+      New order
+    </a>
+  </div>
+</div>
 
-  <div class="header-body">
-            <div class="row align-items-center">
-              <div class="col">
-                
-                <!-- Title -->
-                <h1 class="header-title">
-                  Orders
-                </h1>
+<div class="header-body">
+ 
+  
+  <!-- / .row -->
+  <div class="row align-items-center">
+    <div class="col">
+      
+      <!-- Nav -->
+      <ul class="nav nav-tabs nav-overflow header-tabs">
+        <li class="nav-item">
+          <a href="#!" class="nav-link active">
+            All <span class="badge badge-pill badge-soft-secondary">823</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#!" class="nav-link">
+            Inbox <span class="badge badge-pill badge-soft-secondary">24</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#!" class="nav-link">
+            Not Paid <span class="badge badge-pill badge-soft-secondary">3</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#!" class="nav-link">
+            Not Delivered <span class="badge badge-pill badge-soft-secondary">71</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-              </div>
-              <div class="col-auto">
-                
-                <!-- Button -->
-                <a href="#" class="btn btn-primary">
-                  New order
-                </a>
-                
-              </div>
-            </div> <!-- / .row -->
-            <div class="row align-items-center">
-              <div class="col">
-                
-                <!-- Nav -->
-                <ul class="nav nav-tabs nav-overflow header-tabs">
-                  <li class="nav-item">
-                    <a href="#!" class="nav-link active">
-                      All <span class="badge badge-pill badge-soft-secondary">823</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#!" class="nav-link">
-                      Inbox <span class="badge badge-pill badge-soft-secondary">24</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#!" class="nav-link">
-                      Not Paid <span class="badge badge-pill badge-soft-secondary">3</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#!" class="nav-link">
-                      Not Delivered <span class="badge badge-pill badge-soft-secondary">71</span>
-                    </a>
-                  </li>
-                </ul>
 
-              </div>
-            </div>
-          </div>
 
 <div class="card" data-toggle="lists" data-lists-values="[&quot;orders-order&quot;, &quot;orders-product&quot;, &quot;orders-date&quot;, &quot;orders-total&quot;, &quot;orders-status&quot;, &quot;orders-method&quot;]">
           <div class="card-header">
-            <div class="row align-items-center">
+            <div class="row align-items-center mb-2">
               <div class="col">
 
                 <!-- Search -->
