@@ -27,7 +27,7 @@
             <div class="form-row">
               <div class="col-md-9 mb-3">
                 <label>Product name</label>
-                <input class="form-control" type="text" placeholder="Default input">
+                <input class="form-control" type="text" placeholder="Default input" id="product_name">
                 
               </div>
               <div class="col-md-3 mb-3">
@@ -36,7 +36,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend">£</span>
                   </div>
-                  <input class="form-control" type="number" placeholder="Default input" aria-describedby="inputGroupPrepend" required>
+                  <input class="form-control" id="product_unit_price" type="number" placeholder="Default input" aria-describedby="inputGroupPrepend" value=10 required>
               </div>
             </div>
             </div>
@@ -44,22 +44,26 @@
               <div div class="col-md-4 mb-3">
                 <div>
                   <label  for="customRange3">1 x unit discount</label>
-                  <span class="badge badge-info" id=unitCost1 >£50</span>
-                  <span class="badge badge-info" id=unitDisc1 ></span>
+                  <span class="badge badge-primary" id=post_discount_product_price >£10.00</span>
+                  <span class="badge badge-primary" id=unitDisc1 ></span>
                 </div>
-                <span id="valBox"></span>
-                <div class="value">0</div>
-                <input type="range"  class="custom-range col-md-11" min="0" max="25" step="0.1" value="0" data-qty="1" id="1_unit_slider">  
+                <input type="range"  class="custom-range col-md-11" min="0" max="25" step="0.5" value="0" data-qty="1" id="product_unit_slider">  
               </div>
               <div class="col-md-4 mb-3">
                 <div>
-                  <label for="customRange3">2 x unit discount</label></div>
-                <input type="range" class="custom-range col-md-11" min="0" max="25" step="0.1" value="0" id="2_unit_slider">
+                  <label for="customRange3">2 x unit discount</label>
+                  <span class="badge badge-info" id=unitCost2 ></span>
+                  <span class="badge badge-info" id=unitDisc2 ></span>
+                </div>
+                <input type="range" class="custom-range col-md-11" min="0" max="25" step="0.1" value="0" data-qty="2" id="2_unit_slider">
               </div>
               <div class="col-md-4 mb-3">
                   <div>
-                    <label for="customRange3">2 x unit discount</label></div>
-                  <input type="range" class="custom-range col-md-11" min="0" max="25" step="0.1" value="0" id="2_unit_slider">
+                    <label for="customRange3">2 x unit discount</label>
+                    <span class="badge badge-info" id=unitCost3 >£50</span>
+                  <span class="badge badge-info" id=unitDisc3 ></span>
+                </div>
+                  <input type="range" class="custom-range col-md-11" min="0" max="25" step="0.1" value="0" data-qty="3" id="2_unit_slider">
                 </div>
             </div>
           </form>
