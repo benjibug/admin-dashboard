@@ -2,8 +2,8 @@
 $(document).ready(() => {
     
     var product_one = {
-        "id": 1,
-        "name": "shoes",
+        "id": 4,
+        "name": "hello",
         "price": 10,
         "discount_levels": [
             {
@@ -24,7 +24,8 @@ $(document).ready(() => {
             
         ],
         "discount_price": 10,
-        "quantity": 1
+        "quantity": 1,
+        "stock": null
     }
 
     

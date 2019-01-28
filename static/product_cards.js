@@ -39,6 +39,7 @@ let construct_product_card = (card, product_data) => {
         product_discount_slider[i].addEventListener("input", function () {
             
             product_data.discount_levels[i].discount_price = get_discounted_price(this.value, product_price.value, product_data.discount_levels[i].quantity)
+            product_data.discount_levels[i].discount = parseFloat(this.value)
             product_post_discount_price[i].innerHTML = "£" + product_data.discount_levels[i].discount_price
             product_discount[i].innerHTML = this.value + "%"
             $('.alert').show()
@@ -49,8 +50,8 @@ let construct_product_card = (card, product_data) => {
         product_price.addEventListener("input", function () {
         
             product_data.price = this.value
-            var parsed_product_price = get_discounted_price(product_discount_slider[i].value, this.value, product_data.discount_levels[i].quantity)
-            product_post_discount_price[i].innerHTML = "£" + parsed_product_price
+            product_data.discount_levels[i].discount_price = get_discounted_price(product_discount_slider[i].value, this.value, product_data.discount_levels[i].quantity)
+            product_post_discount_price[i].innerHTML = "£" + product_data.discount_levels[i].discount_price
             $('.alert').show()
             
         })

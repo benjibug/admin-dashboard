@@ -41,9 +41,16 @@ def orders():
 @app.route("/products", methods=["GET","POST"])
 def products():
     if request.method == "POST":
-        product = json.loads(request.data.decode('utf8'))
-        data = db.execute("SELECT * FROM products")
-        print(product)
-        print(data)
+        updated_product = json.loads(request.data.decode('utf8'))
+        db.execute( """ INSERT OR REPLACE INTO products
+                        VALUES (:id,:name,:price,:stock)""",
+                        id=updated_product['id'], name=updated_product['name'], 
+                        price=updated_product['price'], stock=updated_product['stock'])
+        for data in updated_product["discount_levels"]:
+            print(data)
+            db.execute("""  INSERT OR REPLACE INTO discount_levels
+                            VALUES (:product_id, :quantity, :discount)""",
+                            product_id=updated_product['id'], quantity=data["quantity"], discount=data["discount"])
+      
         return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
     return render_template("products.html") 
