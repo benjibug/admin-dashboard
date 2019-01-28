@@ -4,12 +4,17 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
+import json
+from cs50 import SQL
 
 # Configure application
 app = Flask(__name__)
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+# load database
+db = SQL('sqlite:///mbfw.db')
 
 # Ensure responses aren't cached
 @app.after_request
@@ -33,6 +38,12 @@ def dashboard():
 def orders():
     return render_template("orders.html")
 
-@app.route("/products")
+@app.route("/products", methods=["GET","POST"])
 def products():
-    return render_template("products.html")
+    if request.method == "POST":
+        product = json.loads(request.data.decode('utf8'))
+        data = db.execute("SELECT * FROM products")
+        print(product)
+        print(data)
+        return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+    return render_template("products.html") 

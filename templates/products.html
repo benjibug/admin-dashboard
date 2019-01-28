@@ -16,13 +16,19 @@
       <div class="card-header" id="headingOne">
         <h2 class="mb-0">
           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="card_header_button">
-            Product Item #1
-          </button>
+
         </h2>
+        
       </div>
+      
+      
   
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              Unsaved changes to this product
+          </div>
         <div class="card-body">
+            
           <form>
             <div class="form-row">
               <div class="col-md-9 mb-3">
@@ -43,30 +49,33 @@
             <div class="form-row">
               <div div class="col-md-4 mb-3">
                 <div>
-                  <label  for="customRange3"id="product_slider_label">1 x unit discount</label>
-                  <span class="badge badge-primary" id=product_post_discount_price ></span>
-                  <span class="badge badge-primary" id=unitDisc1 ></span>
+                  <label  for="customRange3"id="product_slider_label"></label>
+                  <span class="badge badge-secondary" id=product_post_discount_price ></span>
+                  <span class="badge badge-secondary" id=product_discount ></span>
                 </div>
                 <input type="range"  class="custom-range col-md-11" min="0" max="25" step="0.5" value="0" data-qty="1" id="product_unit_slider">  
               </div>
               <div class="col-md-4 mb-3">
                 <div>
-                  <label for="customRange3" id="product_slider_label">2 x unit discount</label>
-                  <span class="badge badge-primary" id=product_post_discount_price ></span>
-                  <span class="badge badge-info" id=unitDisc2 ></span>
+                  <label for="customRange3" id="product_slider_label"></label>
+                  <span class="badge badge-secondary" id=product_post_discount_price ></span>
+                  <span class="badge badge-secondary" id=product_discount ></span>
                 </div>
-                <input type="range" class="custom-range col-md-11" min="0" max="25" step="0.1" value="0" data-qty="2" id="product_unit_slider">
+                <input type="range" class="custom-range col-md-11" min="0" max="25" step="0.5" value="0" data-qty="2" id="product_unit_slider">
               </div>
               <div class="col-md-4 mb-3">
                   <div>
-                    <label for="customRange3" id="product_slider_label">2 x unit discount</label>
-                    <span class="badge badge-primary" id=product_post_discount_price ></span>
-                  <span class="badge badge-info" id=unitDisc3 ></span>
+                    <label for="customRange3" id="product_slider_label"></label>
+                    <span class="badge badge-secondary" id=product_post_discount_price ></span>
+                  <span class="badge badge-secondary" id=product_discount ></span>
                 </div>
-                  <input type="range" class="custom-range col-md-11" min="0" max="25" step="0.1" value="0" data-qty="3" id="product_unit_slider">
+                  <input type="range" class="custom-range col-md-11" min="0" max="25" step="0.5" value="0" data-qty="3" id="product_unit_slider">
                 </div>
             </div>
-          </form>
+            <button type="button" class="btn btn-primary" id="save_button">Save</button>
+           
+          
+        </form>
         </div>
       </div>
     </div>
