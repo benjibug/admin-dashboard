@@ -5,6 +5,12 @@
     Products
 {% endblock %}
 
+{% block head %}
+<script>
+  var product_data = '{{products|tojson|safe}}'
+</script>
+{% endblock %}
+
 {% block main %}
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -25,7 +31,7 @@
   
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              Unsaved changes to this product
+            <strong>Warning! </strong>Unsaved changes to this product
           </div>
         <div class="card-body">
             
@@ -33,7 +39,7 @@
             <div class="form-row">
               <div class="col-md-9 mb-3">
                 <label>Product name</label>
-                <input class="form-control" type="text" placeholder="Default input" id="product_name">
+                <input class="form-control" type="text" placeholder="" id="product_name">
                 
               </div>
               <div class="col-md-3 mb-3">
@@ -42,7 +48,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend">£</span>
                   </div>
-                  <input class="form-control" id="product_price" type="number" placeholder="Default input" aria-describedby="inputGroupPrepend" value=10 required>
+                  <input class="form-control" id="product_price" type="number" placeholder="Default input" aria-describedby="inputGroupPrepend" value=0 required>
               </div>
             </div>
             </div>
@@ -50,8 +56,8 @@
               <div div class="col-md-4 mb-3">
                 <div>
                   <label  for="customRange3"id="product_slider_label"></label>
-                  <span class="badge badge-secondary" id=product_post_discount_price ></span>
-                  <span class="badge badge-secondary" id=product_discount ></span>
+                  <span class="badge badge-primary" id=product_post_discount_price ></span>
+                  <span class="badge badge-primary" id=product_discount ></span>
                 </div>
                 <input type="range"  class="custom-range col-md-11" min="0" max="25" step="0.5" value="0" data-qty="1" id="product_unit_slider">  
               </div>
@@ -80,28 +86,28 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-header" id="headingTwo">
+      <div class="card-header" id="headingTwabc">
         <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwer" aria-expanded="false" aria-controls="collapseTwer">
             Product Item #2
           </button>
         </h2>
       </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div id="collapseTwer" class="collapse" aria-labelledby="headingTwabc" data-parent="#accordionExample">
         <div class="card-body">
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-header" id="headingThree">
+      <div class="card-header" id="headingThre">
         <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThre" aria-expanded="false" aria-controls="collapseThre">
             Product Item #3
           </button>
         </h2>
       </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div id="collapseThre" class="collapse" aria-labelledby="headingThre" data-parent="#accordionExample">
         <div class="card-body">
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
         </div>

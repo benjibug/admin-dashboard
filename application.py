@@ -6,6 +6,7 @@ from werkzeug.exceptions import default_exceptions, HTTPException, InternalServe
 from werkzeug.security import check_password_hash, generate_password_hash
 import json
 from cs50 import SQL
+import urllib
 
 # Configure application
 app = Flask(__name__)
@@ -40,17 +41,32 @@ def orders():
 
 @app.route("/products", methods=["GET","POST"])
 def products():
+    
     if request.method == "POST":
         updated_product = json.loads(request.data.decode('utf8'))
         db.execute( """ INSERT OR REPLACE INTO products
                         VALUES (:id,:name,:price,:stock)""",
                         id=updated_product['id'], name=updated_product['name'], 
                         price=updated_product['price'], stock=updated_product['stock'])
+        
         for data in updated_product["discount_levels"]:
-            print(data)
             db.execute("""  INSERT OR REPLACE INTO discount_levels
                             VALUES (:product_id, :quantity, :discount)""",
                             product_id=updated_product['id'], quantity=data["quantity"], discount=data["discount"])
       
         return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
-    return render_template("products.html") 
+    
+    products = db.execute("SELECT * FROM products")
+    for item in products:
+        discount_levels = db.execute("SELECT * FROM discount_levels WHERE product_id = :product_id", product_id = item["id"])
+        item["discount_levels"] = [{"product_id": item["id"], "quantity": level["quantity"], 
+                                    "discount": level["discount"]} for level in discount_levels]
+    data = {"data": products}
+
+    # data = json.dumps(data)
+
+    print(data)
+    return render_template("products.html", products=data) 
+
+if __name__ == '__main__':
+    app.run(debug=True)
