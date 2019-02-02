@@ -7,9 +7,11 @@ let get_discounted_price = (percent_to_discount, value, quantity) => {
 
 let construct_product_card = (card, product_data) => {
 
-    const product_card_name = card.querySelector("#card_header_button")
+    const product_card_name = card.querySelector("#card_header_button");
     const product_name = card.querySelector("#product_name");
     const product_price = card.querySelector("#product_price");
+  
+
     
     product_card_name.innerHTML = product_data.name
     product_name.value = product_data.name
@@ -18,7 +20,7 @@ let construct_product_card = (card, product_data) => {
     product_name.addEventListener("input", function (){
 
         product_data.name = this.value
-        $('.alert').show()    
+        $(card).find('.alert').show()    
         
     })
 
@@ -42,7 +44,7 @@ let construct_product_card = (card, product_data) => {
             product_data.discount_levels[i].discount = parseFloat(this.value)
             product_post_discount_price[i].innerHTML = "£" + product_data.discount_levels[i].discount_price
             product_discount[i].innerHTML = this.value + "%"
-            $('.alert').show()
+            $(card).find('.alert').show()
             
         });
 
@@ -52,7 +54,7 @@ let construct_product_card = (card, product_data) => {
             product_data.price = this.value
             product_data.discount_levels[i].discount_price = get_discounted_price(product_discount_slider[i].value, this.value, product_data.discount_levels[i].quantity)
             product_post_discount_price[i].innerHTML = "£" + product_data.discount_levels[i].discount_price
-            $('.alert').show()
+            $(card).find('.alert').show()
             
         })
     }
