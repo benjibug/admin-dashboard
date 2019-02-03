@@ -50,22 +50,30 @@
               </div>
             </div>
             </div>
-
+            <br>
             {% for discount_level in product["discount_levels"] %}
 
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <div>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-auto">
                   <label  for="customRange3"id="product_slider_label"></label>
+                </div>
+                <div class="col-sm-4" id="product-discount-range">
+                  <input type="range"  class="form-control-range" min="0" max="25" step="0.5" value="0" data-qty="1" id="product_unit_slider">
+                </div>
+                <div class="col-md-auto">
                   <span class="badge badge-primary" id=product_post_discount_price ></span>
+                </div>  
+                <div class="col-auto">
                   <span class="badge badge-primary" id=product_discount ></span>
                 </div>
-                <input type="range"  class="custom-range col-md-11" min="0" max="25" step="0.5" value="0" data-qty="1" id="product_unit_slider">  
+                
               </div>
             </div>
+            <br>
 
             {% endfor %}
-
+            <br>
             <button type="button" class="btn btn-primary" id="save_button">Save</button>
            
           
@@ -75,7 +83,7 @@
     </div>
 
     {% endfor %}
-    
+
   </div>
 
 {% endblock %}

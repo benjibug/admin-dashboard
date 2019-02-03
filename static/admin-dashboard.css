@@ -5,3 +5,11 @@
 .fa-xs{
     font-size: 0.5em;
 }
+
+#product-discount-range{
+    padding-top: 0.3em;
+}
+
+#product_slider_label{
+    font-weight:bold;
+}
