@@ -10,6 +10,6 @@
     padding-top: 0.3em;
 }
 
-#product_slider_label{
+.bold, #product_slider_label{
     font-weight:bold;
 }
