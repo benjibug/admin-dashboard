@@ -10,9 +10,7 @@ let construct_product_card = (card, product_data) => {
     const product_card_name = card.querySelector("#card_header_button");
     const product_name = card.querySelector("#product_name");
     const product_price = card.querySelector("#product_price");
-  
 
-    
     product_card_name.innerHTML = product_data.name
     product_name.value = product_data.name
     product_price.value = product_data.price   
@@ -58,23 +56,15 @@ let construct_product_card = (card, product_data) => {
             
         })
     }
-
-    // save form code in here
-    const save_button = card.querySelector("#save_button")
-    save_button.addEventListener("click", function(){
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              product_card_name.innerHTML = product_data.name
-              console.log(this)
-              $('.alert').hide()
-            }
-          };
-
-        xhttp.open("POST", "/products", true);
-        xhttp.setRequestHeader("Content-type", "application/JSON");
-        xhttp.send(JSON.stringify(product_data));
-    })
     
+    const save_button = card.querySelector("#save_button")
+
+    save_button.addEventListener("click", async function(){
+        var response = await postData("/products", product_data)
+        if (response.ok) {
+            $('.alert').hide()
+        } 
+
+    })
 
 }

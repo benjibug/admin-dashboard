@@ -1,5 +1,5 @@
 import os
-from flask import Flask, flash, jsonify, redirect, render_template, request, session
+from flask import Flask, flash, jsonify, redirect, render_template, request, session, send_from_directory
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
@@ -9,7 +9,7 @@ from cs50 import SQL
 import urllib
 
 # Configure application
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -30,6 +30,11 @@ app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+@app.route('/static/<path:path>')
+def send_js(path):
+    print(path)
+    return send_from_directory('static', path)
 
 @app.route("/")
 def dashboard():
