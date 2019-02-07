@@ -2,3 +2,4 @@ env
 *.pyc
 *.pyo
 *.db
+bs4
