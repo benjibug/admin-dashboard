@@ -2,27 +2,13 @@
 $(document).ready(() => {
 
     // // adds active class to current view on navbar
-    setActiveNav()
-
-    // $.get("static/snippets.html", function(html_string)
-    // {
-    //     console.log(html_string)
-    //     var test = $(html_string).find('#new_discount_level')
-    //     console.log(test)
-
-    // },'html'); 
-
-    // const url = "static/snippets.html"
-    // async function test(){
-    //     var response = await fetch(url);
-
-    // }
-    const view = document.getElementById("view").dataset.name 
-
+    setActiveNav();
+    
+    const view = document.getElementById("view").dataset.name; 
     if(view.localeCompare("products")==0){
+        
         const product_card = document.querySelectorAll(".card")
-
-        products = JSON.parse(product_data)
+        const products = JSON.parse(product_data)
 
         for (let i=0; i < product_card.length; i++){
             construct_product_card(product_card[i], products.data[i])  

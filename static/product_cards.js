@@ -57,14 +57,27 @@ let construct_product_card = (card, product_data) => {
         })
     }
     
+    // Save product data for product on card
     const save_button = card.querySelector("#save_button")
 
     save_button.addEventListener("click", async function(){
+        
         var response = await postData("/products", product_data)
-        if (response.ok) {
-            $('.alert').hide()
-        } 
+        if(response.ok) {$('.alert').hide()}; 
 
     })
 
-}
+    // Add new discount slider to a product card
+    const new_discount_level = document.getElementById("new_discount_level");
+    const new_discount_button = card.querySelector("#new_discount_button")
+    const discount_level_widgets = card.querySelector("#discount_level_widgets")
+
+    new_discount_button.addEventListener("click", function(){
+
+        var fragment = new_discount_level.cloneNode(true)
+        fragment.removeAttribute("hidden")
+        discount_level_widgets.append(fragment)
+        
+    })
+
+};
