@@ -1,3 +1,16 @@
+function SliderWidget(
+    product_post_discount_price, 
+    product_discount, 
+    product_slider_label, 
+    product_discount_slider,
+    product_discount_data
+    ){
+        this.product_post_discount_price = product_post_discount_price;
+        this.product_discount = product_discount;
+        this.product_slider_label = product_slider_label;
+        this.product_discount_slider = product_discount_slider;
+        this.product_discount_data = product_discount_data
+    }
 
 let get_discounted_price = (percent_to_discount, value, quantity) => {
     const discount = (100 - percent_to_discount) / 100
@@ -20,10 +33,6 @@ let set_product_slider = (
         product_discount.innerHTML = product_discount_data.discount + "%"
         product_discount_slider.value = product_discount_data.discount
 }
-
-
-
-
 
 let update_product_slider = (value, product_price, product_discount_level_data, product_slider_discount_price, product_slider_discount, card) => {
     
@@ -66,7 +75,25 @@ let construct_product_card = (card, product_data) => {
     const product_slider_label = card.querySelectorAll("#product_slider_label");
     const product_discount_slider = card.querySelectorAll("#product_unit_slider");
 
+    
+
+        
+      
+
     for (let i=0; i < product_data.discount_levels.length; i++){
+
+        let product_discount_data = product_data.discount_levels[i]
+        product_discount_data.product_price = product_data.price
+        console.log(product_discount_data)
+        let obj = new SliderWidget(
+            product_post_discount_price[i],
+            product_discount[i],
+            product_slider_label[i],
+            product_discount_slider[i],
+            product_discount_data
+        )
+
+        console.log(obj)
         
 
         set_product_slider(product_data.price, product_data.discount_levels[i], product_slider_label[i], 
