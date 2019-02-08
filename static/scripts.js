@@ -1,14 +1,16 @@
 
 $(document).ready(() => {
 
-    // // adds active class to current view on navbar
+    // adds active class to current view on navbar
     setActiveNav();
     
+    // If viewing products page then the contstruct_product_card function is used to build an accordian card
+    // for each product in the data from the server
     const view = document.getElementById("view").dataset.name; 
     if(view.localeCompare("products")==0){
         
         const product_card = document.querySelectorAll(".card")
-        const products = JSON.parse(product_data)
+        const products = JSON.parse(server_product_data)
 
         for (let i=0; i < product_card.length; i++){
             construct_product_card(product_card[i], products.data[i])  

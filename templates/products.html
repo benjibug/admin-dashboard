@@ -2,116 +2,121 @@
 {% set view = "products"%}
 
 {% block title %}
-    Products
+Products
 {% endblock %}
 
 {% block head %}
 <script>
-  var product_data = '{{products|tojson|safe}}'
+  var server_product_data = '{{products|tojson|safe}}'
 </script>
 {% endblock %}
 
 {% block main %}
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Products</h1>
-  </div>
+  <h1 class="h2">Products</h1>
+</div>
 
-  <div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionExample">
 
-    {% for product in products["data"] %}
+  {% for product in products["data"] %}
 
-    <div class="card" id = "product_card_{{product['id']}}">
-      <div class="card-header" id="heading-{{product['id']}}">
-        <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-{{product['id']}}" aria-expanded="true" aria-controls="collapse-{{product['id']}}" id="card_header_button">
-        </h2>
+  <div class="card" id="product_card_{{product['id']}}">
+    <div class="card-header" id="heading-{{product['id']}}">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-{{product['id']}}"
+          aria-expanded="true" aria-controls="collapse-{{product['id']}}" id="card_header_button">
+      </h2>
+    </div>
+    <div id="collapse-{{product['id']}}" class="collapse" aria-labelledby="heading-{{product['id']}}" data-parent="#accordionExample">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Warning! </strong>Unsaved changes to this product
       </div>
-      <div id="collapse-{{product['id']}}" class="collapse" aria-labelledby="heading-{{product['id']}}" data-parent="#accordionExample">
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Warning! </strong>Unsaved changes to this product
-          </div>
-        <div class="card-body">
-            
-          <form>
-            <div class="form-row">
-              <div class="col-md-9 mb-3 bold">
-                <label>Product name</label>
-                <input class="form-control" type="text" placeholder="" id="product_name">
-                
-              </div>
-              <div class="col-md-3 mb-3 bold">
-                  <label>Unit price</label>
-                  <div class="input-group">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupPrepend">£</span>
-                  </div>
-                  <input class="form-control" id="product_price" type="number" placeholder="Default input" aria-describedby="inputGroupPrepend" value=0 required>
-              </div>
-            </div>
-            </div>
-            <br>
-            <div class="container" >
-              <div id="discount_level_widgets">
-            {% for discount_level in product["discount_levels"] %}
+      <div class="card-body">
 
-            
+        <form>
+          <div class="form-row">
+            <div class="col-md-9 mb-3 bold">
+              <label>Product name</label>
+              <input class="form-control" type="text" placeholder="" id="product_name">
+
+            </div>
+            <div class="col-md-3 mb-3 bold">
+              <label>Unit price</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupPrepend">£</span>
+                </div>
+                <input class="form-control" id="product_price" type="number" placeholder="Default input"
+                  aria-describedby="inputGroupPrepend" value=0 required>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="container">
+            <div id="discount_level_widgets">
+              {% for discount_level in product["discount_levels"] %}
+
+
               <div class="row">
                 <div class="col-sm-auto">
-                  <label  for="customRange3"id="product_slider_label"></label>
+                  <label for="customRange3" id="product_slider_label"></label>
                 </div>
-                
+
                 <div class="col-lg-4" id="product-discount-range">
-                  <input type="range"  class="custom-range" min="0" max="25" step="0.5" value="0" data-qty="1" id="product_unit_slider">
+                  <input type="range" class="custom-range" min="0" max="25" step="0.5" value="0" data-qty="1" id="product_unit_slider">
                 </div>
-           
+
                 <div class="col-md-1">
-                  <span id=product_discount ></span>
+                  <span id=product_discount></span>
                 </div>
                 <div class="col-auto">
-                  <span id=product_post_discount_price ></span>
-                </div>  
-                
-                
+                  <span id=product_post_discount_price></span>
+                </div>
+
+
               </div>
             
-            <br>
+              <br>
 
-            {% endfor %}
-          </div>
+              {% endfor %}
+            </div>
 
             <button type="button" class="btn btn-outline-secondary" id="new_discount_button">+ Add discount</button>
-            </div>
-            <br>
-            <button type="button" class="btn btn-primary" id="save_button">Save</button>
-           
-          
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary" id="save_button">Save</button>
+
+
         </form>
-        </div>
       </div>
     </div>
-
-    {% endfor %}
-
   </div>
 
-  <div class="row" id="new_discount_level" hidden>
-    <div class="input-group col-md-2">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend" data-children-count="0">#</span>
-      </div>
-      <input class="form-control" type="number" placeholder="Default input" aria-describedby="inputGroupPrepend" value="0" required=True>
+  {% endfor %}
+
+</div>
+
+<div class="row" id="new_discount_level" hidden>
+  <div class="input-group col-md-2">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroupPrepend" data-children-count="0">#</span>
     </div>
-    <div class="col-lg-4" >
-        <input type="range" class="custom-range" min="0" max="25" step="0.5" value="0" data-qty="1">
+    <input class="form-control" type="number" placeholder="Default input" aria-describedby="inputGroupPrepend" value="0"
+      required=True>
+  </div>
+  <div id="widget">
+    <div class="col-lg-4">
+      <input type="range" class="custom-range" min="0" max="25" step="0.5" value="0" data-qty="1">
     </div>
     <div class="col-md-1">
-        <span ></span>
+      <span></span>
     </div>
     <div class="col-auto">
-        <span></span>
-    </div>  
-    <br>
+      <span></span>
+    </div>
+  </div>
+  <br>
 </div>
 
 {% endblock %}
