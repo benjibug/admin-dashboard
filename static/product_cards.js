@@ -1,50 +1,44 @@
 function SliderWidget(
+
     product_post_discount_price, 
     product_discount, 
     product_slider_label, 
     product_discount_slider,
     product_discount_data
+
     ){
+
         this.product_post_discount_price = product_post_discount_price;
         this.product_discount = product_discount;
         this.product_slider_label = product_slider_label;
         this.product_discount_slider = product_discount_slider;
         this.product_discount_data = product_discount_data;
-        this.setProductSlider = setProductSlider;
-        this.updateProductSlider = updateProductSlider
-    }
-
-let setProductSlider = () => {
-        console.log(this['product_discount_data'])
-        console.log(this.product_discount)
         
-       
-        this.product_slider_label.innerHTML = this.product_discount_data.quantity + " x unit discount"
-        this.product_post_discount_price.innerHTML = "£" + get_discounted_price(this.product_discount_data.discount, this.product_discount_data.product_price, this.product_discount_data.quantity)
-        this.product_discount.innerHTML = this.product_discount_data.discount + "%"
-        this.product_discount_slider.value = this.product_discount_data.discount
-}
+        this.setProductSlider = function (){
 
-let updateProductSlider = (card) => {
-    
-  
-    let discount_price = get_discounted_price(this.product_discount_slider.value, this.product_discount_data.product_price, this.product_discount_data.quantity)
-    this.product_discount_data.discount = parseFloat(vathis.product_discount_slider.valuelue)
-    this.product_post_discount_price.innerHTML = "£" + discount_price
-    product_discount.innerHTML = this.product_discount_slider.value + "%"
-    $(card).find('.alert').show()
-    
-};
+            this.product_slider_label.innerHTML = this.product_discount_data.quantity + " x unit discount"
+            this.product_post_discount_price.innerHTML = "£" + get_discounted_price(this.product_discount_data.discount, this.product_discount_data.product_price, this.product_discount_data.quantity)
+            this.product_discount.innerHTML = this.product_discount_data.discount + "%"
+            this.product_discount_slider.value = this.product_discount_data.discount
+
+        };
+
+        this.updateProductSlider = function (){
+
+            let discount_price = get_discounted_price(this.product_discount_slider.value, this.product_discount_data.product_price, this.product_discount_data.quantity)
+            this.product_discount_data.discount = parseFloat(this.product_discount_slider.value)
+            this.product_post_discount_price.innerHTML = "£" + discount_price
+            product_discount.innerHTML = this.product_discount_slider.value + "%"
+
+        }
+
+    }
 
 let get_discounted_price = (percent_to_discount, value, quantity) => {
     const discount = (100 - percent_to_discount) / 100
     const unrounded_figure = discount * value * quantity
     return Number.parseFloat(unrounded_figure).toFixed(2)
 }
-
-
-
-// -------------------------------------
 
 let construct_product_card = (card, product_data) => {
 
@@ -73,7 +67,7 @@ let construct_product_card = (card, product_data) => {
     for (let i=0; i < product_data.discount_levels.length; i++){
 
         let product_discount_data = product_data.discount_levels[i]
-        // product_discount_data.product_price = product_data.price
+        product_discount_data.product_price = product_data.price
 
         const SliderWidgetObj = new SliderWidget(
             product_post_discount_price[i],
@@ -83,24 +77,17 @@ let construct_product_card = (card, product_data) => {
             product_discount_data
         )
 
-        // console.log(SliderWidgetObj)
-        console.log(SliderWidgetObj.product_discount_data)
-
-
-        // set_product_slider(product_data.price, product_data.discount_levels[i], product_slider_label[i], 
-        //     product_post_discount_price[i], product_discount[i], product_discount_slider[i])
-
-
         SliderWidgetObj.setProductSlider()
 
-        // slider listener to update unit price tag
+        product_discount_slider[i].addEventListener("input", function(){
+            
+            SliderWidgetObj.updateProductSlider()
+            $(card).find('.alert').show()
 
-
-        // product_discount_slider[i].addEventListener("input", function(){
-        //     update_product_slider(product_discount_slider[i].value, product_data.price, product_data.discount_levels[i], product_post_discount_price[i], product_discount[i], card);
-        // });
+        });
 
         // price input listener to update all unit price tags
+
         product_price.addEventListener("input", function () {
         
             product_data.price = this.value
