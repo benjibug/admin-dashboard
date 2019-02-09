@@ -103,18 +103,22 @@ Products
       <span class="input-group-text" id="inputGroupPrepend" data-children-count="0">#</span>
     </div>
     <input class="form-control" type="number" placeholder="Default input" aria-describedby="inputGroupPrepend" value="0"
-      required=True>
+      required=True id="product_discount_quatity">
   </div>
-  <div id="widget">
-    <div class="col-lg-4">
-      <input type="range" class="custom-range" min="0" max="25" step="0.5" value="0" data-qty="1">
+  <!-- <div id="widget"> -->
+      <div class="col-sm-auto">
+          <label for="customRange3" id="product_slider_label"></label>
+        </div>
+    <div class="col-lg-4" id="product-discount-range">
+      <input type="range" class="custom-range" min="0" max="25" step="0.5" value="0" data-qty="1" id="product_unit_slider">
     </div>
     <div class="col-md-1">
-      <span></span>
+      <span id=product_discount></span>
     </div>
     <div class="col-auto">
-      <span></span>
+      <span id=product_post_discount_price></span>
     </div>
+    <!-- </div> -->
   </div>
   <br>
 </div>
